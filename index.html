@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght=500;700&display=swap');
         
         body { 
             font-family: 'Quicksand', sans-serif; 
@@ -126,10 +126,6 @@
                 font-size: 2.5rem;
                 text-align: center;
             }
-            #pantalla-menu .grid, #pantalla-menu-juegos .grid {
-                width: 100%;
-                max-width: 320px;
-            }
         }
           
         #cuento-imagen { transition: transform .3s; }
@@ -138,9 +134,9 @@
         .fun-title { font-family: 'Fredoka One', cursive; }
         .pantalla { display: none; min-height: 100vh; width: 100%; }
         .pantalla.active { display: flex; flex-direction: column; animation: fadeIn .3s border-box; }
-        .btn-goma { transition: transform .1s, box-shadow .1s; box-shadow: 0 8px 0 rgba(0,0,0,.1); }
-        .btn-goma:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,.1); }
-        .drop-zone { border: 4px dashed #cbd5e1; transition: background .3s, transform .3s; }
+        .btn-goma { transition: transform .1s, box-shadow .1s; box-shadow: 0 10px 0 rgba(0,0,0,.15); }
+        .btn-goma:active { transform: translateY(6px); box-shadow: 0 4px 0 rgba(0,0,0,.15); }
+        .drop-zone { border: 5px dashed #a8a29e; transition: background .3s, transform .3s; }
         .drop-zone.filled { border: none; background: #dcfce7; transform: scale(1.05); }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -172,68 +168,69 @@
 
     <!-- MENÚ PRINCIPAL -->
     <div id="pantalla-menu" class="pantalla items-center justify-center px-6 py-10">
-        <h1 class="fun-title text-5xl text-orange-500 mb-6 text-center animate__animated animate__bounceIn">¡Hola, amiguito!</h1>
+        <h1 class="fun-title text-6xl text-orange-500 mb-6 text-center animate__animated animate__bounceIn">¡Hola, amiguito!</h1>
         <div class="flex flex-wrap gap-4 justify-center mb-8">
             <button onclick="activarPantallaCompleta()" class="bg-yellow-300 px-6 py-3 rounded-full font-black text-yellow-900 shadow-lg">⭐ Pantalla Completa</button>
             <button onclick="cerrarSesion()" class="bg-red-400 px-6 py-3 rounded-full font-black text-white shadow-lg">🚪 Cerrar Sesión</button>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-md">
-            <button onclick="mostrar('menu-juegos')" class="btn-goma bg-purple-500 p-10 rounded-[3rem] text-white">
-                <span class="text-6xl block mb-2">🎮</span>
-                <span class="font-black text-2xl uppercase">¡JUEGOS!</span>
+            <button onclick="mostrar('menu-juegos')" class="btn-goma bg-purple-500 p-12 rounded-[3.5rem] text-white">
+                <span class="text-7xl block mb-2">🎮</span>
+                <span class="font-black text-3xl uppercase tracking-wide">¡JUEGOS!</span>
             </button>
-            <button onclick="mostrar('biblioteca')" class="btn-goma bg-sky-400 p-10 rounded-[3rem] text-white">
-                <span class="text-6xl block mb-2">📖</span>
-                <span class="font-black text-2xl uppercase">Cuentos</span>
+            <button onclick="mostrar('biblioteca')" class="btn-goma bg-sky-400 p-12 rounded-[3.5rem] text-white">
+                <span class="text-7xl block mb-2">📖</span>
+                <span class="font-black text-3xl uppercase tracking-wide">Cuentos</span>
             </button>
         </div>
     </div>
 
-    <!-- SECCIÓN DE JUEGOS (SUBMENÚ AMPLIADO) -->
+    <!-- SECCIÓN DE JUEGOS (SUBMENÚ AMPLIADO - BOTONES GRANDES PARA 3 AÑOS) -->
     <div id="pantalla-menu-juegos" class="pantalla items-center justify-center px-4 py-8">
-        <header class="w-full max-w-2xl flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu')" class="text-emerald-500 text-3xl bg-white p-3 rounded-full shadow-lg"><i class="fa-solid fa-house"></i></button>
-            <h1 class="fun-title text-3xl text-purple-600 text-center">ZONA DE JUEGOS</h1>
-            <div class="w-10"></div>
+        <header class="w-full max-w-4xl flex justify-between items-center mb-6 px-4">
+            <button onclick="mostrar('menu')" class="text-emerald-500 text-4xl bg-white p-4 rounded-full shadow-xl"><i class="fa-solid fa-house"></i></button>
+            <h1 class="fun-title text-4xl md:text-5xl text-purple-600 text-center">ZONA DE JUEGOS</h1>
+            <div class="w-14"></div>
         </header>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-2xl overflow-y-auto max-h-[70vh] p-2">
-            <button onclick="mostrar('juego-frutas')" class="btn-goma bg-rose-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🍎</span>
-                <span class="font-black text-sm uppercase">Frutas</span>
+        <!-- Se adaptó a botones mucho más grandes, textos llamativos y rejilla cómoda -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl overflow-y-auto max-h-[75vh] p-4">
+            <button onclick="mostrar('juego-frutas')" class="btn-goma bg-rose-400 p-8 rounded-[2.5rem] text-white border-4 border-rose-300">
+                <span class="text-6xl block mb-2">🍎</span>
+                <span class="font-black text-xl uppercase tracking-wider">Frutas</span>
             </button>
-            <button onclick="mostrar('juego-numeros')" class="btn-goma bg-amber-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🔢</span>
-                <span class="font-black text-sm uppercase">Contar</span>
+            <button onclick="mostrar('juego-numeros')" class="btn-goma bg-amber-400 p-8 rounded-[2.5rem] text-white border-4 border-amber-300">
+                <span class="text-6xl block mb-2">🔢</span>
+                <span class="font-black text-xl uppercase tracking-wider">Contar</span>
             </button>
-            <button onclick="mostrar('rompecabezas')" class="btn-goma bg-indigo-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🧩</span>
-                <span class="font-black text-sm uppercase">Puzzle</span>
+            <button onclick="mostrar('rompecabezas')" class="btn-goma bg-indigo-400 p-8 rounded-[2.5rem] text-white border-4 border-indigo-300">
+                <span class="text-6xl block mb-2">🧩</span>
+                <span class="font-black text-xl uppercase tracking-wider">Puzzle</span>
             </button>
-            <button onclick="mostrar('tap-game')" class="btn-goma bg-pink-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🎈</span>
-                <span class="font-black text-sm uppercase">Globos</span>
+            <button onclick="mostrar('tap-game')" class="btn-goma bg-pink-400 p-8 rounded-[2.5rem] text-white border-4 border-pink-300">
+                <span class="text-6xl block mb-2">🎈</span>
+                <span class="font-black text-xl uppercase tracking-wider">Globos</span>
             </button>
-            <button onclick="mostrar('juego-animales')" class="btn-goma bg-emerald-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🐱</span>
-                <span class="font-black text-sm uppercase">Animales</span>
+            <button onclick="mostrar('juego-animales')" class="btn-goma bg-emerald-400 p-8 rounded-[2.5rem] text-white border-4 border-emerald-300">
+                <span class="text-6xl block mb-2">🐱</span>
+                <span class="font-black text-xl uppercase tracking-wider">Animales</span>
             </button>
-            <button onclick="mostrar('juego-colores')" class="btn-goma bg-cyan-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🎨</span>
-                <span class="font-black text-sm uppercase">Colores</span>
+            <button onclick="mostrar('juego-colores')" class="btn-goma bg-cyan-400 p-8 rounded-[2.5rem] text-white border-4 border-cyan-300">
+                <span class="text-6xl block mb-2">🎨</span>
+                <span class="font-black text-xl uppercase tracking-wider">Colores</span>
             </button>
-            <button onclick="mostrar('juego-bateria')" class="btn-goma bg-orange-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🥁</span>
-                <span class="font-black text-sm uppercase">Batería</span>
+            <button onclick="mostrar('juego-bateria')" class="btn-goma bg-orange-400 p-8 rounded-[2.5rem] text-white border-4 border-orange-300">
+                <span class="text-6xl block mb-2">🥁</span>
+                <span class="font-black text-xl uppercase tracking-wider">Batería</span>
             </button>
-            <button onclick="mostrar('juego-burbujas')" class="btn-goma bg-teal-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🧼</span>
-                <span class="font-black text-sm uppercase">Burbujas</span>
+            <button onclick="mostrar('juego-burbujas')" class="btn-goma bg-teal-400 p-8 rounded-[2.5rem] text-white border-4 border-teal-300">
+                <span class="text-6xl block mb-2">🧼</span>
+                <span class="font-black text-xl uppercase tracking-wider">Burbujas</span>
             </button>
-            <button onclick="mostrar('juego-adivina')" class="btn-goma bg-red-400 p-5 rounded-[2rem] text-white">
-                <span class="text-4xl block mb-1">🦁</span>
-                <span class="font-black text-sm uppercase">¿Quién es?</span>
+            <button onclick="mostrar('juego-adivina')" class="btn-goma bg-red-400 p-8 rounded-[2.5rem] text-white border-4 border-red-300">
+                <span class="text-6xl block mb-2">🦁</span>
+                <span class="font-black text-xl uppercase tracking-wider">¿Quién es?</span>
             </button>
         </div>
     </div>
@@ -241,41 +238,45 @@
     <!-- JUEGO FRUTAS -->
     <div id="pantalla-juego-frutas" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-8">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-rose-500">¿DÓNDE VAN?</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-rose-500">¿DÓNDE VAN?</h2>
             <div class="w-8"></div>
         </header>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 w-full max-w-xl">
-            <div id="target-manzana" ondragover="allowDrop(event)" ondrop="drop(event,'manzana')" class="drop-zone h-24 rounded-3xl flex items-center justify-center text-5xl opacity-20">🍎</div>
-            <div id="target-pera" ondragover="allowDrop(event)" ondrop="drop(event,'pera')" class="drop-zone h-24 rounded-3xl flex items-center justify-center text-5xl opacity-20">🍐</div>
-            <div id="target-sandia" ondragover="allowDrop(event)" ondrop="drop(event,'sandia')" class="drop-zone h-24 rounded-3xl flex items-center justify-center text-5xl opacity-20">🍉</div>
-            <div id="target-naranja" ondragover="allowDrop(event)" ondrop="drop(event,'naranja')" class="drop-zone h-24 rounded-3xl flex items-center justify-center text-5xl opacity-20">🍊</div>
+        <!-- Casillas de destino más altas y grandes para fácil arrastre -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 w-full max-w-2xl">
+            <div id="target-manzana" ondragover="allowDrop(event)" ondrop="drop(event,'manzana')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-rose-100">🍎</div>
+            <div id="target-pera" ondragover="allowDrop(event)" ondrop="drop(event,'pera')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-green-100">🍐</div>
+            <div id="target-sandia" ondragover="allowDrop(event)" ondrop="drop(event,'sandia')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-red-100">🍉</div>
+            <div id="target-naranja" ondragover="allowDrop(event)" ondrop="drop(event,'naranja')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-orange-100">🍊</div>
         </div>
-        <div class="flex gap-6 flex-wrap justify-center">
-            <div id="manzana" draggable="true" ondragstart="drag(event)" class="text-6xl bg-white p-4 rounded-3xl shadow-lg cursor-grab">🍎</div>
-            <div id="sandia" draggable="true" ondragstart="drag(event)" class="text-6xl bg-white p-4 rounded-3xl shadow-lg cursor-grab">🍉</div>
-            <div id="naranja" draggable="true" ondragstart="drag(event)" class="text-6xl bg-white p-4 rounded-3xl shadow-lg cursor-grab">🍊</div>
-            <div id="pera" draggable="true" ondragstart="drag(event)" class="text-6xl bg-white p-4 rounded-3xl shadow-lg cursor-grab">🍐</div>
+        <!-- Frutas arrastrables gigantes con mucho padding -->
+        <div class="flex gap-8 flex-wrap justify-center">
+            <div id="manzana" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍎</div>
+            <div id="sandia" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍉</div>
+            <div id="naranja" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍊</div>
+            <div id="pera" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍐</div>
         </div>
     </div>
 
     <!-- JUEGO NÚMEROS -->
     <div id="pantalla-juego-numeros" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-amber-500">¿CUÁNTOS HAY?</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-amber-500">¿CUÁNTOS HAY?</h2>
             <div class="w-8"></div>
         </header>
-        <div id="area-conteo" class="flex-1 flex flex-wrap items-center justify-center gap-4 text-6xl py-6"></div>
-        <div id="opciones-numeros" class="grid grid-cols-3 gap-4 w-full max-w-md pb-10"></div>
+        <!-- Estrellas gigantes para contar de forma llamativa -->
+        <div id="area-conteo" class="flex-1 flex flex-wrap items-center justify-center gap-6 text-8xl py-6"></div>
+        <!-- Botones de números gigantes y coloridos para pulsar fácil -->
+        <div id="opciones-numeros" class="grid grid-cols-3 gap-6 w-full max-w-xl pb-10"></div>
     </div>
 
     <!-- JUEGO ROMPECABEZAS -->
     <div id="pantalla-rompecabezas" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-purple-500">🧩 ROMPECABEZAS</h2>
-            <button onclick="hablar('Arrastra las piezas y completa el dinosaurio')" class="bg-purple-500 text-white w-14 h-14 rounded-full shadow-lg text-2xl">🔊</button>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-purple-500">🧩 ROMPECABEZAS</h2>
+            <button onclick="hablar('Arrastra las piezas y completa el dinosaurio')" class="bg-purple-500 text-white w-16 h-16 rounded-full shadow-lg text-3xl">🔊</button>
         </header>
         <div class="flex flex-col lg:flex-row gap-8 items-center">
             <div class="grid grid-cols-2 gap-1 bg-white p-4 rounded-[2rem] shadow-2xl">
@@ -299,73 +300,73 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white mt-8 px-8 py-4 rounded-full shadow-xl text-purple-600 font-black text-xl text-center">🦕 ¡Completa el dinosaurio!</div>
+        <div class="bg-white mt-8 px-8 py-4 rounded-full shadow-xl text-purple-600 font-black text-2xl text-center">🦕 ¡Completa el dinosaurio!</div>
     </div>
 
     <!-- JUEGO GLOBOS -->
     <div id="pantalla-tap-game" class="pantalla p-4 items-center relative overflow-hidden">
         <header class="w-full flex justify-between items-center mb-4 z-10">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl bg-white/80 p-3 rounded-full w-12 h-12 flex items-center justify-center shadow-md">
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl bg-white/80 p-3 rounded-full w-14 h-14 flex items-center justify-center shadow-md">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <h2 class="fun-title text-3xl text-pink-600 bg-white/80 px-4 py-1 rounded-full shadow-md">🎈 GLOBOS</h2>
-            <button onclick="iniciarTapGame()" class="bg-pink-500 text-white px-6 py-4 rounded-full shadow-2xl font-black text-2xl">🔄</button>
+            <h2 class="fun-title text-4xl text-pink-600 bg-white/80 px-5 py-2 rounded-full shadow-md">🎈 GLOBOS</h2>
+            <button onclick="iniciarTapGame()" class="bg-pink-500 text-white px-6 py-4 rounded-full shadow-2xl font-black text-3xl">🔄</button>
         </header>
-        <div class="bg-white px-6 py-3 rounded-full shadow-xl font-black text-pink-500 mb-4 z-10">¡Toca los globos!</div>
+        <div class="bg-white px-8 py-4 rounded-full shadow-xl font-black text-2xl text-pink-500 mb-4 z-10">¡Toca los globos!</div>
         <div id="area-globos" class="absolute inset-0 overflow-hidden pointer-events-auto"></div>
     </div>
 
     <!-- JUEGO ANIMALES -->
     <div id="pantalla-juego-animales" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-emerald-600">🐱 ANIMALES</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-emerald-600">🐱 ANIMALES</h2>
             <div class="w-8"></div>
         </header>
-        <div class="bg-white px-6 py-2 rounded-full shadow-md font-bold text-emerald-500 mb-6 text-center">¡Escucha sus sonidos!</div>
-        <div class="grid grid-cols-2 gap-6 w-full max-w-md px-4">
-            <button onclick="tocarAnimal('perro', '¡Guau, guau!')" class="btn-goma bg-white p-6 rounded-[2.5rem] text-6xl shadow-lg border-2 border-emerald-200">🐶</button>
-            <button onclick="tocarAnimal('gato', '¡Miau, miau!')" class="btn-goma bg-white p-6 rounded-[2.5rem] text-6xl shadow-lg border-2 border-emerald-200">🐱</button>
-            <button onclick="tocarAnimal('vaca', '¡Muuu!')" class="btn-goma bg-white p-6 rounded-[2.5rem] text-6xl shadow-lg border-2 border-emerald-200">🐮</button>
-            <button onclick="tocarAnimal('pollito', '¡Pío, pío!')" class="btn-goma bg-white p-6 rounded-[2.5rem] text-6xl shadow-lg border-2 border-emerald-200">🐥</button>
+        <div class="bg-white px-6 py-3 rounded-full shadow-md font-black text-xl text-emerald-500 mb-6 text-center">¡Escucha sus sonidos!</div>
+        <div class="grid grid-cols-2 gap-6 w-full max-w-lg px-4">
+            <button onclick="tocarAnimal('perro', '¡Guau, guau!')" class="btn-goma bg-white p-10 rounded-[3rem] text-7xl shadow-lg border-4 border-emerald-200">🐶</button>
+            <button onclick="tocarAnimal('gato', '¡Miau, miau!')" class="btn-goma bg-white p-10 rounded-[3rem] text-7xl shadow-lg border-4 border-emerald-200">🐱</button>
+            <button onclick="tocarAnimal('vaca', '¡Muuu!')" class="btn-goma bg-white p-10 rounded-[3rem] text-7xl shadow-lg border-4 border-emerald-200">🐮</button>
+            <button onclick="tocarAnimal('pollito', '¡Pío, pío!')" class="btn-goma bg-white p-10 rounded-[3rem] text-7xl shadow-lg border-4 border-emerald-200">🐥</button>
         </div>
     </div>
 
     <!-- JUEGO COLORES -->
     <div id="pantalla-juego-colores" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-cyan-600">🎨 COLORES</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-cyan-600">🎨 COLORES</h2>
             <div class="w-8"></div>
         </header>
-        <div class="w-full max-w-md space-y-4 px-4 flex-1 flex flex-col justify-center pb-10">
-            <button onclick="tocarColor('Rojo')" class="btn-goma w-full bg-red-500 py-6 rounded-2xl text-white font-black text-2xl border-2 border-white">ROJO</button>
-            <button onclick="tocarColor('Azul')" class="btn-goma w-full bg-blue-500 py-6 rounded-2xl text-white font-black text-2xl border-2 border-white">AZUL</button>
-            <button onclick="tocarColor('Verde')" class="btn-goma w-full bg-green-500 py-6 rounded-2xl text-white font-black text-2xl border-2 border-white">VERDE</button>
-            <button onclick="tocarColor('Amarillo')" class="btn-goma w-full bg-yellow-400 py-6 rounded-2xl text-yellow-900 font-black text-2xl border-2 border-white">AMARILLO</button>
+        <div class="w-full max-w-md space-y-6 px-4 flex-1 flex flex-col justify-center pb-10">
+            <button onclick="tocarColor('Rojo')" class="btn-goma w-full bg-red-500 py-8 rounded-3xl text-white font-black text-3xl border-4 border-white">ROJO</button>
+            <button onclick="tocarColor('Azul')" class="btn-goma w-full bg-blue-500 py-8 rounded-3xl text-white font-black text-3xl border-4 border-white">AZUL</button>
+            <button onclick="tocarColor('Verde')" class="btn-goma w-full bg-green-500 py-8 rounded-3xl text-white font-black text-3xl border-4 border-white">VERDE</button>
+            <button onclick="tocarColor('Amarillo')" class="btn-goma w-full bg-yellow-400 py-8 rounded-3xl text-yellow-900 font-black text-3xl border-4 border-white">AMARILLO</button>
         </div>
     </div>
 
     <!-- BATERÍA MÁGICA -->
     <div id="pantalla-juego-bateria" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-orange-500">🥁 BATERÍA</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-orange-500">🥁 BATERÍA</h2>
             <div class="w-8"></div>
         </header>
-        <div class="grid grid-cols-2 gap-6 w-full max-w-md px-4 flex-1 items-center">
-            <button onclick="tocarInstrumento('Tambor', '¡Taca-taca-bum!')" class="btn-goma bg-amber-100 p-8 rounded-[3rem] text-7xl shadow-xl border-4 border-orange-400">🥁</button>
-            <button onclick="tocarInstrumento('Maracas', '¡Chic-chic-chic!')" class="btn-goma bg-amber-100 p-8 rounded-[3rem] text-7xl shadow-xl border-4 border-orange-400">🪇</button>
-            <button onclick="tocarInstrumento('Trompeta', '¡Tu-tu-ru-tu!')" class="btn-goma bg-amber-100 p-8 rounded-[3rem] text-7xl shadow-xl border-4 border-orange-400">🎺</button>
-            <button onclick="tocarInstrumento('Guitarra', '¡Glin-glan-glin!')" class="btn-goma bg-amber-100 p-8 rounded-[3rem] text-7xl shadow-xl border-4 border-orange-400">🎸</button>
+        <div class="grid grid-cols-2 gap-6 w-full max-w-lg px-4 flex-1 items-center">
+            <button onclick="tocarInstrumento('Tambor', '¡Taca-taca-bum!')" class="btn-goma bg-amber-100 p-10 rounded-[3rem] text-8xl shadow-xl border-4 border-orange-400">🥁</button>
+            <button onclick="tocarInstrumento('Maracas', '¡Chic-chic-chic!')" class="btn-goma bg-amber-100 p-10 rounded-[3rem] text-8xl shadow-xl border-4 border-orange-400">🪇</button>
+            <button onclick="tocarInstrumento('Trompeta', '¡Tu-tu-ru-tu!')" class="btn-goma bg-amber-100 p-10 rounded-[3rem] text-8xl shadow-xl border-4 border-orange-400">🎺</button>
+            <button onclick="tocarInstrumento('Guitarra', '¡Glin-glan-glin!')" class="btn-goma bg-amber-100 p-10 rounded-[3rem] text-8xl shadow-xl border-4 border-orange-400">🎸</button>
         </div>
     </div>
 
     <!-- EXPLOTA BURBUJAS -->
     <div id="pantalla-juego-burbujas" class="pantalla p-4 items-center relative overflow-hidden">
         <header class="w-full flex justify-between items-center mb-4 z-10">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl bg-white/80 p-3 rounded-full shadow-md"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-teal-600 bg-white/80 px-4 py-1 rounded-full shadow-md">🧼 BURBUJAS</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl bg-white/80 p-3 rounded-full shadow-md"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-teal-600 bg-white/80 px-5 py-2 rounded-full shadow-md">🧼 BURBUJAS</h2>
             <div class="w-10"></div>
         </header>
         <div id="area-burbujas" class="absolute inset-0 overflow-hidden"></div>
@@ -374,19 +375,19 @@
     <!-- ¿QUIÊN ES EL ANIMAL? -->
     <div id="pantalla-juego-adivina" class="pantalla p-6 items-center">
         <header class="w-full flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-arrow-left"></i></button>
-            <h2 class="fun-title text-3xl text-red-500">🦁 ¿QUIÊN HACE?</h2>
+            <button onclick="mostrar('menu-juegos')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-arrow-left"></i></button>
+            <h2 class="fun-title text-4xl text-red-500">🦁 ¿QUIÊN HACE?</h2>
             <div class="w-8"></div>
         </header>
-        <button onclick="reproducirSonidoAdivina()" class="bg-red-500 text-white font-black text-xl px-8 py-4 rounded-full shadow-lg mb-8 animate__animated animate__pulse animate__infinite">🔊 ESCUCHAR SONIDO</button>
-        <div id="opciones-adivina" class="grid grid-cols-2 gap-6 w-full max-w-md px-4"></div>
+        <button onclick="reproducirSonidoAdivina()" class="bg-red-500 text-white font-black text-2xl px-10 py-6 rounded-full shadow-lg mb-8 animate__animated animate__pulse animate__infinite">🔊 ESCUCHAR SONIDO</button>
+        <div id="opciones-adivina" class="grid grid-cols-2 gap-6 w-full max-w-lg px-4"></div>
     </div>
 
     <!-- BIBLIOTECA -->
     <div id="pantalla-biblioteca" class="pantalla p-6">
         <header class="flex justify-between items-center mb-6">
-            <button onclick="mostrar('menu')" class="text-emerald-500 text-3xl"><i class="fa-solid fa-house"></i></button>
-            <h2 class="fun-title text-3xl text-sky-500">MIS CUENTOS</h2>
+            <button onclick="mostrar('menu')" class="text-emerald-500 text-4xl"><i class="fa-solid fa-house"></i></button>
+            <h2 class="fun-title text-4xl text-sky-500">MIS CUENTOS</h2>
             <div class="w-8"></div>
         </header>
         <div id="lista-cuentos" class="space-y-4"></div>
@@ -395,12 +396,12 @@
     <!-- LECTOR -->
     <div id="pantalla-lector" class="pantalla bg-white overflow-y-auto">
         <div class="flex flex-col items-center p-6 text-center">
-            <h2 id="cuento-titulo" class="fun-title text-3xl text-sky-500 mb-6"></h2>
+            <h2 id="cuento-titulo" class="fun-title text-4xl text-sky-500 mb-6"></h2>
             <img id="cuento-imagen" src="" class="w-full max-w-2xl h-[350px] rounded-[2rem] shadow-2xl mb-6 object-contain bg-gradient-to-b from-yellow-50 to-pink-50 p-4 border-4 border-white">
-            <p id="cuento-texto" class="text-xl font-bold text-gray-700 leading-loose mb-8 max-w-2xl whitespace-pre-line"></p>
+            <p id="cuento-texto" class="text-2xl font-bold text-gray-700 leading-loose mb-8 max-w-2xl whitespace-pre-line"></p>
             <div class="flex gap-4 pb-10">
                 <button onclick="mostrar('biblioteca')" class="bg-gray-100 p-6 rounded-full text-gray-400"><i class="fa-solid fa-list"></i></button>
-                <button id="btn-releer" class="bg-sky-500 text-white px-10 py-6 rounded-full text-xl font-bold shadow-xl">ESCUCHAR</button>
+                <button id="btn-releer" class="bg-sky-500 text-white px-12 py-6 rounded-full text-2xl font-bold shadow-xl">ESCUCHAR</button>
             </div>
         </div>
     </div>
@@ -458,7 +459,7 @@
             if(id === 'juego-frutas'){
                 document.querySelectorAll('#pantalla-juego-frutas [draggable=true]').forEach(f => f.style.visibility='visible');
                 document.querySelectorAll('.drop-zone').forEach(z => {
-                    z.classList.remove('filled'); z.innerText = z.id.replace('target-', '🍎').substring(0,2); z.style.opacity=".2";
+                    z.classList.remove('filled'); z.innerText = z.id.replace('target-', '🍎').substring(0,2); z.style.opacity=".3";
                 });
                 hablar("¿Dónde van las frutas?");
             }
@@ -484,9 +485,9 @@
             div.innerHTML = "";
             cuentos.forEach(c => {
                 div.innerHTML += `
-                    <button onclick="abrirCuento(${c.id})" class="w-full bg-white p-5 rounded-[2rem] shadow-md flex items-center gap-6">
-                        <span class="text-4xl">${c.icon}</span>
-                        <span class="font-black text-xl text-sky-600 uppercase">${c.t}</span>
+                    <button onclick="abrirCuento(${c.id})" class="w-full bg-white p-6 rounded-[2.5rem] shadow-md flex items-center gap-6">
+                        <span class="text-5xl">${c.icon}</span>
+                        <span class="font-black text-2xl text-sky-600 uppercase">${c.t}</span>
                     </button>
                 `;
             });
@@ -535,7 +536,7 @@
             optionsSort = opciones.sort(() => Math.random() - 0.5);
             optionsSort.forEach(n => {
                 botones.innerHTML += `
-                    <button onclick="verificarNum(${n})" class="btn-goma bg-white border-2 border-amber-300 p-4 rounded-2xl text-2xl font-black text-amber-500">
+                    <button onclick="verificarNum(${n})" class="btn-goma bg-white border-4 border-amber-300 p-6 rounded-3xl text-4xl font-black text-amber-500">
                         ${n}
                     </button>
                 `;
@@ -579,9 +580,9 @@
                 for(let i=0; i<6; i++) {
                     const globo = document.createElement("div");
                     globo.className = "globo-animado absolute rounded-[50%_50%_48%_48%] cursor-pointer";
-                    const size = 85 + Math.random()*20;
+                    const size = 110 + Math.random()*25; // Globos aún más grandes para niños de 3 años
                     globo.style.width = size + "px";
-                    globo.style.height = (size + 20) + "px";
+                    globo.style.height = (size + 25) + "px";
                     globo.style.background = colores[Math.floor(Math.random()*colores.length)];
                     globo.style.left = (Math.random() * 75) + "%";
                     globo.style.boxShadow = "inset -10px -10px 0 rgba(255,255,255,0.2)";
@@ -592,7 +593,7 @@
                     globo.appendChild(cuerda);
 
                     globo.onclick = () => {
-                        globo.innerHTML = "<div class='text-4xl text-center mt-4'>💥</div>";
+                        globo.innerHTML = "<div class='text-5xl text-center mt-6'>💥</div>";
                         globo.style.background = "transparent"; globo.style.boxShadow = "none";
                         document.getElementById("sonidoBien").play();
                         setTimeout(() => globo.remove(), 250);
@@ -629,7 +630,7 @@
             function crearBurbuja() {
                 const burbuja = document.createElement("div");
                 burbuja.className = "burbuja-animada absolute rounded-full border-2 border-white/60 bg-cyan-300/30 shadow-[inset_0_4px_12px_rgba(255,255,255,0.5)] cursor-pointer";
-                const size = 70 + Math.random() * 40;
+                const size = 90 + Math.random() * 40; // Burbujas más grandes para interactuar mejor
                 burbuja.style.width = size + "px";
                 burbuja.style.height = size + "px";
                 burbuja.style.left = (Math.random() * 80) + "%";
@@ -665,7 +666,7 @@
             const lista = [...bancoAdivina].sort(() => Math.random() - 0.5);
             lista.forEach(item => {
                 contenedor.innerHTML += `
-                    <button onclick="verificarAdivina('${item.n}')" class="btn-goma bg-white p-8 rounded-[2.5rem] text-6xl shadow-md border-2 border-red-200">
+                    <button onclick="verificarAdivina('${item.n}')" class="btn-goma bg-white p-10 rounded-[3rem] text-7xl shadow-md border-4 border-red-200">
                         ${item.e}
                     </button>
                 `;
