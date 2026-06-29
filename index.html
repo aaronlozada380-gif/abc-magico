@@ -186,7 +186,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN DE JUEGOS (SUBMENÚ AMPLIADO - BOTONES GRANDES PARA 3 AÑOS) -->
+    <!-- SECCIÓN DE JUEGOS -->
     <div id="pantalla-menu-juegos" class="pantalla items-center justify-center px-4 py-8">
         <header class="w-full max-w-4xl flex justify-between items-center mb-6 px-4">
             <button onclick="mostrar('menu')" class="text-emerald-500 text-4xl bg-white p-4 rounded-full shadow-xl"><i class="fa-solid fa-house"></i></button>
@@ -194,7 +194,6 @@
             <div class="w-14"></div>
         </header>
 
-        <!-- Se adaptó a botones mucho más grandes, textos llamativos y rejilla cómoda -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl overflow-y-auto max-h-[75vh] p-4">
             <button onclick="mostrar('juego-frutas')" class="btn-goma bg-rose-400 p-8 rounded-[2.5rem] text-white border-4 border-rose-300">
                 <span class="text-6xl block mb-2">🍎</span>
@@ -242,14 +241,12 @@
             <h2 class="fun-title text-4xl text-rose-500">¿DÓNDE VAN?</h2>
             <div class="w-8"></div>
         </header>
-        <!-- Casillas de destino más altas y grandes para fácil arrastre -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 w-full max-w-2xl">
             <div id="target-manzana" ondragover="allowDrop(event)" ondrop="drop(event,'manzana')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-rose-100">🍎</div>
             <div id="target-pera" ondragover="allowDrop(event)" ondrop="drop(event,'pera')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-green-100">🍐</div>
             <div id="target-sandia" ondragover="allowDrop(event)" ondrop="drop(event,'sandia')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-red-100">🍉</div>
             <div id="target-naranja" ondragover="allowDrop(event)" ondrop="drop(event,'naranja')" class="drop-zone h-36 rounded-[2rem] flex items-center justify-center text-6xl opacity-30 bg-orange-100">🍊</div>
         </div>
-        <!-- Frutas arrastrables gigantes con mucho padding -->
         <div class="flex gap-8 flex-wrap justify-center">
             <div id="manzana" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍎</div>
             <div id="sandia" draggable="true" ondragstart="drag(event)" class="text-7xl bg-white p-6 rounded-[2rem] shadow-xl cursor-grab touch-none">🍉</div>
@@ -265,9 +262,7 @@
             <h2 class="fun-title text-4xl text-amber-500">¿CUÁNTOS HAY?</h2>
             <div class="w-8"></div>
         </header>
-        <!-- Estrellas gigantes para contar de forma llamativa -->
         <div id="area-conteo" class="flex-1 flex flex-wrap items-center justify-center gap-6 text-8xl py-6"></div>
-        <!-- Botones de números gigantes y coloridos para pulsar fácil -->
         <div id="opciones-numeros" class="grid grid-cols-3 gap-6 w-full max-w-xl pb-10"></div>
     </div>
 
@@ -407,6 +402,8 @@
     </div>
 
     <audio id="sonidoBien" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=success-fanfare-trumpets-6185.mp3"></audio>
+    <!-- Elemento de audio global para efectos secundarios de juegos -->
+    <audio id="sonidoEfecto"></audio>
 
     <script>
         let vozNeural = null;
@@ -415,6 +412,22 @@
         let bucleGlobos = null;
         let bucleBurbujas = null;
         let animalCorrecto = "";
+
+        // Objeto con las rutas locales de tus archivos MP3 dentro de la carpeta "sonidos/"
+        const bibliotecaSonidos = {
+            perro: "sonidos/perro.mp3",
+            gato: "sonidos/gato.mp3",
+            vaca: "sonidos/vaca.mp3",
+            pollito: "sonidos/pollito.mp3",
+            Tambor: "sonidos/tambor.mp3",
+            Maracas: "sonidos/maracas.mp3",
+            Trompeta: "sonidos/trompeta.mp3",
+            Guitarra: "sonidos/guitarra.mp3",
+            "León": "sonidos/leon.mp3",
+            "Chancho": "sonidos/cerdo.mp3",
+            "Rana": "sonidos/rana.mp3",
+            "Oveja": "sonidos/oveja.mp3"
+        };
 
         function configurarVoz(){
             const voces = window.speechSynthesis.getVoices();
@@ -439,7 +452,7 @@
             { id: 1, t: "Pipo el patito", icon: "🦆", img: "https://previews.123rf.com/images/nataka/nataka1611/nataka161100003/65290730-ducklings-with-mother-duck-playing-in-lake-vector-illustration-eps.avif", txt: "Pipo era un patito pequeño. Le gustaba nadar. —¡Cuac, cuac! —cantaba feliz. Pipo nadó muy rápido. Después vio una flor flotando. —¡Qué bonita! —dijo. El patito llevó la flor a su mamá. —Gracias, Pipo —sonrió mamá pata. Los dos nadaron juntos bajo el sol." },
             { id: 2, t: "El Perrito Saltarín", icon: "🐶", img: "https://png.pngtree.com/png-vector/20241211/ourmid/pngtree-a-lively-cartoon-style-park-scene-with-children-playing-dog-chasing-png-image_14714767.png", txt: "Max era un perrito muy juguetón. Le gustaba correr y saltar. Un día encontró una pelota roja. —¡Guau! ¡Qué divertida! —dijo Max. El perrito saltó alto. La pelota rodó por el pasto. Max corrió rápido y atrapó la pelota. Todos los niños aplaudieron. Max movió la cola muy feliz." },
             { id: 3, t: "El conejito y la zanahoria", icon: "🐰", img: "https://img.freepik.com/vector-premium/lindo-conejito-ilustracion-dibujos-animados-zanahoria_1241023-2540.jpg?w=740", txt: "Había una vez un conejito llamado Tito. Tito tenía mucha hambre. —¡Quiero una zanahoria grande! —dijo. Tito caminó por el jardín. Encontró una zanahoria naranja y brillante. —¡La encontré! —saltó feliz. El conejito compartió la zanahoria con sus amigos. Todos comieron y jugaron felices." },
-            { id: 4, t: "La Estrellita Brillante", icon: "⭐", img: "https://images.stockcake.com/public/3/5/c/35c8c151-0200-4f1d-8060-1c46875c10ec_large/magical-moon-night-stockcake.jpg", txt: "Luna era una estrellita pequeña. Ella quería brillar mucho. —¿Cómo puedo brillar más? —preguntó. La luna respondió: —Brilla con alegría. Luna sonrió. Entonces comenzó a iluminar el cielo. Los niños miraron arriba y dijeron: —¡Qué estrella tan bonita! Luna se sintió muy feliz." },
+            { id: 4, t: "La Estrellita Brillante", icon: "⭐", img: "https://images.stockcake.com/public/3/5/c/35c8c151-0200-4f1d-8060-1c46875c10ec_large/magical-moon-night-stockcake.jpg", txt: "Luna era una estrellita pequeña. She quería brillar mucho. —¿Cómo puedo brillar más? —preguntó. La luna respondió: —Brilla con alegría. Luna sonrió. Entonces comenzó a iluminar el cielo. Los niños miraron arriba y dijeron: —¡Qué estrella tan bonita! Luna se sintió muy feliz." },
             { id: 5, t: "Lola la Gatita", icon: "🐱", img: "https://thumbs.dreamstime.com/b/gatito-el-dormir-14383076.jpg?w=992", txt: "Lola era una gatita muy tierna. Después de jugar todo el día, tenía mucho sueño. Tomó un poco de leche tibia. Luego abrazó su peluche favorito. —Buenas noches —dijo mamá gata. Lola cerro los ojos y durmió feliz." }
         ];
 
@@ -533,7 +546,7 @@
                 let num = Math.floor(Math.random()*5)+1;
                 if(!opciones.includes(num)){ opciones.push(num); }
             }
-            optionsSort = opciones.sort(() => Math.random() - 0.5);
+            let optionsSort = opciones.sort(() => Math.random() - 0.5);
             optionsSort.forEach(n => {
                 botones.innerHTML += `
                     <button onclick="verificarNum(${n})" class="btn-goma bg-white border-4 border-amber-300 p-6 rounded-3xl text-4xl font-black text-amber-500">
@@ -580,7 +593,7 @@
                 for(let i=0; i<6; i++) {
                     const globo = document.createElement("div");
                     globo.className = "globo-animado absolute rounded-[50%_50%_48%_48%] cursor-pointer";
-                    const size = 110 + Math.random()*25; // Globos aún más grandes para niños de 3 años
+                    const size = 110 + Math.random()*25;
                     globo.style.width = size + "px";
                     globo.style.height = (size + 25) + "px";
                     globo.style.background = colores[Math.floor(Math.random()*colores.length)];
@@ -607,9 +620,29 @@
             bucleGlobos = setInterval(generarLote, 5000);
         }
 
+        // Función unificada para reproducir MP3 local primero y luego hablar de forma limpia
+        function reproducirAudioYDecir(nombreClave, textoAlternativo) {
+            const audioGlobal = document.getElementById("sonidoEfecto");
+            window.speechSynthesis.cancel(); // Pausa cualquier voz para que se oiga el sonido directo
+
+            if(bibliotecaSonidos[nombreClave]) {
+                audioGlobal.src = bibliotecaSonidos[nombreClave];
+                audioGlobal.play().catch(() => {
+                    // Si el archivo falla o no existe localmente, recurre a la voz simulada de inmediato
+                    hablar(textoAlternativo);
+                });
+                
+                // Cuando el sonido MP3 termine, la maestra virtual interactúa diciendo qué es
+                audioGlobal.onended = () => {
+                    hablar(textoAlternativo);
+                };
+            } else {
+                hablar(textoAlternativo);
+            }
+        }
+
         function tocarAnimal(nombre, sonido) {
-            document.getElementById("sonidoBien").play();
-            hablar(sonido + " Es el " + nombre);
+            reproducirAudioYDecir(nombre, "Es el " + nombre);
         }
 
         function tocarColor(nombreColor) {
@@ -618,8 +651,7 @@
         }
 
         function tocarInstrumento(nombre, sonido) {
-            document.getElementById("sonidoBien").play();
-            hablar(sonido + " " + nombre);
+            reproducirAudioYDecir(nombre, "Es el " + nombre);
         }
 
         function iniciarJuegoBurbujas() {
@@ -630,7 +662,7 @@
             function crearBurbuja() {
                 const burbuja = document.createElement("div");
                 burbuja.className = "burbuja-animada absolute rounded-full border-2 border-white/60 bg-cyan-300/30 shadow-[inset_0_4px_12px_rgba(255,255,255,0.5)] cursor-pointer";
-                const size = 90 + Math.random() * 40; // Burbujas más grandes para interactuar mejor
+                const size = 90 + Math.random() * 40;
                 burbuja.style.width = size + "px";
                 burbuja.style.height = size + "px";
                 burbuja.style.left = (Math.random() * 80) + "%";
@@ -676,7 +708,17 @@
 
         function reproducirSonidoAdivina() {
             const objeto = bancoAdivina.find(x => x.n === animalCorrecto);
-            if(objeto) hablar("¿Quién hace? " + objeto.s);
+            if(objeto) {
+                window.speechSynthesis.cancel();
+                const audioGlobal = document.getElementById("sonidoEfecto");
+                if (bibliotecaSonidos[animalCorrecto]) {
+                    audioGlobal.src = bibliotecaSonidos[animalCorrecto];
+                    audioGlobal.play().catch(() => hablar("¿Quién hace " + objeto.s + "?"));
+                    audioGlobal.onended = () => hablar("¿Qué animalito hace ese sonido?");
+                } else {
+                    hablar("¿Quién hace? " + objeto.s);
+                }
+            }
         }
 
         function verificarAdivina(nombre) {
